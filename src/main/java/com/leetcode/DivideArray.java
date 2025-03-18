@@ -1,7 +1,6 @@
 package main.java.com.leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 // 2206
 public class DivideArray {
     public static void main(String[] args) {
@@ -14,13 +13,13 @@ public class DivideArray {
         if (nums.length == 0)
             return false;
 
-        Map<Integer, Integer> numsMap = new HashMap<>();
-        for (int num: nums) {
-          numsMap.put(num, numsMap.getOrDefault(num, 0) + 1);
-        }
+        Arrays.sort(nums);
+        if (nums.length % 2 != 0)
+            return false;
 
-        for (Map.Entry<Integer, Integer> entry: numsMap.entrySet()) {
-            if (entry.getValue() % 2 != 0)
+        for (int i=0; i<nums.length/2; i++) {
+            int index = 2 * i;
+            if (nums[index] != nums[index+1])
                 return false;
         }
         return true;
