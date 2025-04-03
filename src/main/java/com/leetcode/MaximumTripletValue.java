@@ -1,6 +1,6 @@
 package main.java.com.leetcode;
 
-// 2873
+// 2873 & 2874
 public class MaximumTripletValue {
     public static void main(String[] args) {
 //        int[] nums = {2,3,1};
