@@ -31,18 +31,16 @@ public class CountSymmetricIntegers {
         String[] parts = new String[2];
         int mid = len / 2;
 
-        parts[0] = s.substring(0, mid);
-        parts[1] = s.substring(mid);
+        int sum1 = 0;
+        int sum2 = 0;
 
-        return sumOfDigits(parts[0]) == sumOfDigits(parts[1]);
-    }
-
-    private static int sumOfDigits(String part) {
-
-        int sum = 0;
-        for (int i=0; i<part.length(); i++) {
-            sum += Integer.parseInt(String.valueOf(part.charAt(i)));
+        for (int i=0; i<mid; i++) {
+            sum1 += s.charAt(i) - '0';
         }
-        return sum;
+
+        for (int j=mid; j<len; j++) {
+            sum2 += s.charAt(j) - '0';
+        }
+        return (sum1 == sum2);
     }
 }
