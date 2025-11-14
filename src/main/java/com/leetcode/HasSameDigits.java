@@ -1,9 +1,12 @@
 package main.java.com.leetcode;
 
+import java.util.Arrays;
+
 public class HasSameDigits {
     public static void main(String[] args) {
         String s = "3902";
-        System.out.println("has same digits " + hasSameDigits(s));
+//        String s = "34789";
+        System.out.println("hasSameDigits " + hasSameDigits(s));
     }
 
     public static boolean hasSameDigits(String s) {
@@ -11,17 +14,15 @@ public class HasSameDigits {
             return false;
         }
 
-        char[] sArray = s.toCharArray();
-
+        StringBuilder sb = new StringBuilder();
         while (s.length() > 2) {
-            StringBuilder sb = new StringBuilder();
             for (int i=1; i<s.length(); i++) {
-                char result = (char)(((s.charAt(i - 1) - '0' + s.charAt(i) - '0') % 10) + '0');
-                sb.append(result);
+                char ch = (char)(((s.charAt(i - 1) - '0' + s.charAt(i) - '0') % 10) + '0');
+                sb.append(ch);
             }
             s = sb.toString();
+            sb.setLength(0);
         }
-
-        return sArray[0] == sArray[1];
+        return s.charAt(0) == s.charAt(1);
     }
 }
